@@ -1,12 +1,15 @@
+---
 name: Generate slides from source
 
-on:
+on:                             # yamllint disable-line rule:truthy
   push:
     paths:
       - 'Content/Presentations/**'
       - 'Content/ReleaseBriefings/**'
   pull_request:
     branches: [ "main" ]
+  # Allow running workflows manually:
+  workflow_dispatch:
 
 jobs:
   build:
