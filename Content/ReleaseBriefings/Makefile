@@ -1,3 +1,5 @@
+LATEXMK = latexmk -lualatex
+LATEXMK-C = latexmk -c
 
 default: release-51
 
@@ -11,40 +13,42 @@ workaround-off:
 	rm KokkosTutorial_PreTitle.tex.bak
 
 release-36:
-	latexmk release-36
+	$(LATEXMK) release-36
 
 release-37:
-	latexmk release-37
+	$(LATEXMK) release-37
 
 release-40:
-	latexmk release-40
+	$(LATEXMK) release-40
 
 release-41:
-	latexmk release-41
+	$(LATEXMK) release-41
 
 release-42:
-	latexmk release-42
+	$(LATEXMK) release-42
 
 release-43:
-	latexmk release-43
+	$(LATEXMK) release-43
 
 release-44:
-	latexmk release-44
+	$(LATEXMK) release-44
 
 release-45:
-	latexmk release-45
+	$(LATEXMK) release-45
 
 release-46:
-	latexmk release-46
+	$(LATEXMK) release-46
 
 release-47:
-	latexmk release-47
+	$(LATEXMK) release-47
 
 release-50:
-	latexmk release-50
+	$(LATEXMK) release-50
 
 release-51:
-	latexmk release-51
+	$(LATEXMK) release-51
+
+all: release-36 release-37 release-40 release-41 release-42 release-43 release-44 release-45 release-46 release-47 release-50 release-51
 
 clean:
-	latexmk -c
+	$(LATEXMK-C)

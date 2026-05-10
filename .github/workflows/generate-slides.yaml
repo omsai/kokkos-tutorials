@@ -1,6 +1,7 @@
+---
 name: Generate slides from source
 
-on:
+on:                             # yamllint disable-line rule:truthy
   push:
     paths:
       - 'Content/Presentations/**'
@@ -16,17 +17,20 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      DEBIAN_FRONTEND: noninteractive
+
     steps:
     - name: Install packages
       run: >
         sudo apt-get update &&
-        DEBIAN_FRONTEND=noninteractive
         sudo apt-get install -y --no-install-recommends
         make
         latexmk
         lmodern
         python3-pygments
         texlive
+        texlive-luatex
         texlive-latex-extra
         texlive-plain-generic
 
@@ -36,7 +40,7 @@ jobs:
     - name: Build slides
       run: >
         cd Content/${{ matrix.which }} &&
-        make
+        make LATEXMK='latexmk -lualatex -shell-escape' all
 
     - name: Upload PDFs as artifacts
       id: deployment

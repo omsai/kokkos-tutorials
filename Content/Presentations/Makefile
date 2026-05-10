@@ -1,2 +1,4 @@
 sub-make:
-	make -C modularized
+	+$(MAKE) -C modularized $(MAKECMDGOALS)
+
+all: sub-make
